@@ -1,0 +1,57 @@
+---
+title: "Reproducible Pitch Presentation"
+author: "Victor Latorre Garrido"
+date: "31/5/2020"
+output: ioslides_presentation
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE, comment = NA)
+```
+
+
+## Work Presentation
+- This is the final presentation for the Developing Data Products course inside the Data Scientist Specialization from the John Hopkins University (Coursera).
+
+- The shiny application which have been developed, helps initially to understand how kmeans clustering performs (graphically) over the iris dataset depending on the number of clusters selected.
+
+## Iris Data Set presentation
+
+- Some statistics over the variables in the iris datasets are presented:
+
+```{r iris, echo = TRUE}
+summary(iris)
+```
+
+## Slide with R Output
+
+- You can access to the shinny application throug the following link:
+
+<https://victorlatorregarrido.shinyapps.io/IrisClustering/>
+
+- Changing the number k in the slider input, you will obtain the representation on some visualizations of the iris data of the clustering result.
+
+
+## Slide with Plot
+
+- The following result corresponds to the best selection for k for the iris dataset:
+
+```{r pressure}
+iris.new<- iris[,c(1,2,3,4)]
+iris.class<- iris[,"Species"]
+
+normalize <- function(x){
+    return ((x-min(x))/(max(x)-min(x)))
+}
+        
+iris.new$Sepal.Length<- normalize(iris.new$Sepal.Length)
+iris.new$Sepal.Width<- normalize(iris.new$Sepal.Width)
+iris.new$Petal.Length<- normalize(iris.new$Petal.Length)
+iris.new$Petal.Width<- normalize(iris.new$Petal.Width)
+        
+result <- kmeans(iris.new, 3)
+        
+  
+plot(iris.new[c(1,2)], col=result$cluster)
+```
+

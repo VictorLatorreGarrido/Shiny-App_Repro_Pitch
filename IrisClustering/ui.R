@@ -8,6 +8,7 @@ shinyUI(fluidPage(
                         min = 2, max = 10, value = 2)
         ),
         mainPanel(
+            titlePanel("Iris Clustering Representation"),
             plotOutput("clustering")
         )
     )
