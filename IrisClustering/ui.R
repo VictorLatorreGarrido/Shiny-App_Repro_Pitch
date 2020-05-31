@@ -1,7 +1,7 @@
 library(shiny)
 
 shinyUI(fluidPage(
-    titlePanel("Iris Clustering"),
+    titlePanel("Iris Clustering with Kmeans"),
     sidebarLayout(
         sidebarPanel(
             sliderInput("clusters", "Select number of clusters:",
